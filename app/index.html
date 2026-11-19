@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+    <p class="tagline">Your photo + a caption, made into GTA-style cover art. Offline — photos never leave your machine.</p>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <label>Photo 1 <input id="photo1" type="file" accept="image/*"></label>
+      <span class="filename" id="photo1Name">sample: sunset boulevard</span>
+      <label>Photo 2 <input id="photo2" type="file" accept="image/*"></label>
+      <span class="filename" id="photo2Name">sample: neon street</span>
+      <label>Photo 3 <input id="photo3" type="file" accept="image/*"></label>
+      <span class="filename" id="photo3Name">not loaded</span>
+      <button id="loadSamples" type="button">Load sample photos</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Layout &amp; panels</legend>
+      <label>Layout <select id="layout"></select></label>
+      <p class="hint" id="panelLabel">Panel 1 of 3</p>
+      <p class="hint">Click a panel in the preview to pick it, then drag it to pan.</p>
+      <label>Panel photo <select id="panelPhoto"></select></label>
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.05" value="1"> <span id="zoomValue">100%</span></label>
+      <label>Crop <select id="fitFill"><option value="fill">Fill panel (crop)</option><option value="fit">Fit whole photo</option></select></label>
+      <button id="resetPanel" type="button">Reset panel crop</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Caption</legend>
+      <label>Title <input id="title" type="text" maxlength="30" value="NEON COAST"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="vice city nights"></label>
+      <label>Caption position <select id="captionPos"><option value="bottom">Bottom</option><option value="top">Top</option></select></label>
+      <label>Lettering <select id="lettering"><option value="sunset">Sunset gradient</option><option value="white">Bold white</option><option value="neon">Neon pink</option></select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Grade &amp; effects</legend>
+      <label>Colour grade <select id="grade"></select></label>
+      <label class="check"><input id="neon" type="checkbox" checked> Neon glow</label>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="halftone" type="checkbox" checked> Halftone dots</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Export</legend>
+      <label>Size <select id="size"></select></label>
+      <button id="export" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+  <section class="preview" aria-label="Live cover preview">
+    <canvas id="cover" width="1920" height="1080" aria-label="The cover"></canvas>
+    <p class="preview-note">Live preview — drag a panel to pan it. Fan-made cover art; not affiliated with Rockstar Games.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
